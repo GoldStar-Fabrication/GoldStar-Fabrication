@@ -1,0 +1,4 @@
+- Show gallery
+- add contacts (emails, call, social media)
+- Services page (sheds, grills, doors...)
+- about

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
+import RequestQuoteModal from "../components/RequestQuoteModal";
 
 const NAV_LINKS = ["Home", "About", "Services", "Projects", "Gallery", "Contact"];
 
@@ -85,6 +86,7 @@ export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
   const heroRef = useRef(null);
+  const [OpenQuoteModal, setOpenQuoteModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -610,6 +612,9 @@ export default function Landing() {
 
   return (
     <div style={s.root}>
+
+      <RequestQuoteModal isOpen={OpenQuoteModal} onClose={() => setOpenQuoteModal(false)} />
+      
       {/* Mobile Dynamic Slide Overlay Menu */}
       {menuOpen && (
         <div style={s.mobileMenu}>
@@ -663,6 +668,7 @@ export default function Landing() {
               {dark ? "☀ Light" : "☾ Dark"}
             </button>
             <button 
+              onClick={() => setOpenQuoteModal(true)}
               style={s.ctaBtn}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-1px)";
